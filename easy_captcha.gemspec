@@ -26,11 +26,11 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {spec}/*`.split("\n")
   s.require_paths = ["lib"]
 
-  s.add_dependency('rails', [">= 3.0.0"])
+  s.add_dependency('rails', [">= 4.0.0"])
   s.add_dependency('bundler', [">0"])
   s.add_dependency('simplecov', [">= 0.3.8"])
-  s.add_dependency('rspec-rails', ["~> 2.8.1"])
-  s.add_dependency('yard', [">= 0.7.0"])
+  s.add_development_dependency('yard', [">= 0.7.0"])
+  s.add_development_dependency('rspec-rails', ["~> 2.8.1"])
 
 
   if defined?(PLATFORM) && PLATFORM == 'java'
