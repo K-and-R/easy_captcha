@@ -80,7 +80,7 @@ module EasyCaptcha
     # validate given captcha code and re
     def captcha_valid?(code)
       return false if session[:captcha].blank? or code.blank?
-      session[:captcha].to_s.upcase == code.to_s.upcase
+      session[:captcha].to_s.upcase == code.to_s
     end
     alias_method :valid_captcha?, :captcha_valid?
 
