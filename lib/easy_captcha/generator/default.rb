@@ -67,7 +67,7 @@ module EasyCaptcha
         end
 
         # Render the text in the image
-        canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code) {
+        canvas.annotate(Magick::Draw.new, 0, 0, 0, 0, code.gsub(/%/, '\%')) {
           self.gravity     = Magick::CenterGravity
           self.font        = config.font
           self.font_weight = Magick::LighterWeight
