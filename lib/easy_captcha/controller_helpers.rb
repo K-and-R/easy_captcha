@@ -74,7 +74,13 @@ module EasyCaptcha
 
     # generate captcha code, save in session and return
     def generate_captcha_code
-      session[:captcha] = EasyCaptcha.length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
+      length = EasyCaptcha.length
+      # app specific: consumers get about half the captcha length
+      if params[:consumer]
+        length = length / 2
+        session[:consumer_captcha] = true
+      end
+      session[:captcha] = length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
     end
 
     # validate given captcha code and re
@@ -87,6 +93,7 @@ module EasyCaptcha
     # reset the captcha code in session for security after each request
     def reset_last_captcha_code!
       session.delete(:captcha)
+      session.delete(:consumer_captcha)
     end
 
   end
