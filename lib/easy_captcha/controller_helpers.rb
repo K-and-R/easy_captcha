@@ -10,6 +10,7 @@ module EasyCaptcha
 
     # generate captcha image and return it as blob
     def generate_captcha
+      Rails.logger.info("#{Time.now}: generate_captcha in EasyCaptcha. params: #{params}.")
       if EasyCaptcha.cache
         # create cache dir
         FileUtils.mkdir_p(EasyCaptcha.cache_temp_dir)
@@ -81,6 +82,7 @@ module EasyCaptcha
         session[:consumer_captcha] = true
       end
       session[:captcha] = length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
+      Rails.logger.info("#{Time.now}: generate_captcha_code in EasyCaptcha. session[:captcha]: #{session[:captcha]} length: #{length}, original length: #{EasyCaptcha.length} chars count: #{EasyCaptcha.chars.size}.")
     end
 
     # validate given captcha code and re
