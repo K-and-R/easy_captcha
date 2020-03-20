@@ -83,6 +83,7 @@ module EasyCaptcha
       end
       session[:captcha] = length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
       Rails.logger.info("#{Time.now}: generate_captcha_code in EasyCaptcha. session[:captcha]: #{session[:captcha]} length: #{length}, original length: #{EasyCaptcha.length} chars count: #{EasyCaptcha.chars.size}.")
+      session[:captcha]
     end
 
     # validate given captcha code and re
