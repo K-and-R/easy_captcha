@@ -11,9 +11,10 @@ module EasyCaptcha
         @font_size              = 24
         @font_fill_color        = '#333333'
         @font                   = File.expand_path('../../../../resources/captcha.ttf', __FILE__)
-        @font_stroke            = '#000000'
-        @font_stroke_color      = 0
+        @font_stroke            = 0
+        @font_stroke_color      = '#000000'
         @image_background_color = '#FFFFFF'
+        @background_image       = nil
         @sketch                 = true
         @sketch_radius          = 3
         @sketch_sigma           = 1
@@ -61,7 +62,7 @@ module EasyCaptcha
         require 'rmagick' unless defined?(Magick)
 
         config = self
-        canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |variable|
+        canvas = Magick::Image.new(EasyCaptcha.image_width, EasyCaptcha.image_height) do |_variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
           self.background_color = 'none' if config.background_image.present?
         end
@@ -88,7 +89,7 @@ module EasyCaptcha
         canvas = canvas.wave(rand(a.last - a.first) + a.first, rand(w.last - w.first) + w.first) if config.wave?
 
         # Sketch
-        canvas = canvas.sketch(config.sketch_radius, config.sketch_sigma, rand(180)) if config.sketch? && canvas.respond_to?('sketch')
+        canvas = canvas.sketch(config.sketch_radius, config.sketch_sigma, rand(180)) if config.sketch? && canvas.respond_to?(:sketch)
 
         # Implode
         canvas = canvas.implode(config.implode.to_f) if config.implode.is_a? Float
@@ -96,12 +97,20 @@ module EasyCaptcha
         # Crop image because to big after waveing
         canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.image_width, EasyCaptcha.image_height)
 
+        # Combine images if background image is present
+        if config.background_image.blank?
+          image = canvas.to_blob { self.format = 'PNG' }
+        else
+          #Background Random Position
+          gravit = [Magick::NorthWestGravity, Magick::NorthGravity, Magick::NorthEastGravity, Magick::WestGravity,
+                     Magick::CenterGravity, Magick::EastGravity, Magick::SouthWestGravity, Magick::SouthGravity,
+                     Magick::SouthEastGravity].sample
 
         # Combine images if background image is present
         if config.background_image.present?
           background = Magick::Image.read(config.background_image).first
-          background.composite!(canvas, Magick::CenterGravity, Magick::OverCompositeOp)
-
+          background.composite!(canvas, gravit, Magick::OverCompositeOp)
+          background = background.crop(gravit, EasyCaptcha.image_width, EasyCaptcha.image_height)
           image = background.to_blob { self.format = 'PNG' }
         else
           image = canvas.to_blob { self.format = 'PNG' }
