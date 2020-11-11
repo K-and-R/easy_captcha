@@ -10,6 +10,7 @@ module EasyCaptcha
 
     # generate captcha image and return it as blob
     def generate_captcha
+      Rails.logger.info("#{Time.now}: generate_captcha in EasyCaptcha. params: #{params}.")
       if EasyCaptcha.cache
         # create cache dir
         FileUtils.mkdir_p(EasyCaptcha.cache_temp_dir)
@@ -74,19 +75,28 @@ module EasyCaptcha
 
     # generate captcha code, save in session and return
     def generate_captcha_code
-      session[:captcha] = EasyCaptcha.length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
+      length = EasyCaptcha.length
+      # app specific: consumers get about half the captcha length
+      if params[:consumer]
+        length = length / 2
+        session[:consumer_captcha] = true
+      end
+      session[:captcha] = length.times.collect { EasyCaptcha.chars[rand(EasyCaptcha.chars.size)] }.join
+      Rails.logger.info("#{Time.now}: generate_captcha_code in EasyCaptcha. session[:captcha]: #{session[:captcha]} length: #{length}, original length: #{EasyCaptcha.length} chars count: #{EasyCaptcha.chars.size}.")
+      session[:captcha]
     end
 
     # validate given captcha code and re
     def captcha_valid?(code)
       return false if session[:captcha].blank? or code.blank?
-      session[:captcha].to_s.upcase == code.to_s.upcase
+      session[:captcha].to_s.upcase == code.to_s
     end
     alias_method :valid_captcha?, :captcha_valid?
 
     # reset the captcha code in session for security after each request
     def reset_last_captcha_code!
       session.delete(:captcha)
+      session.delete(:consumer_captcha)
     end
 
   end
