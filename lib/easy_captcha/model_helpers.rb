@@ -21,9 +21,14 @@ module EasyCaptcha
 
       # validate captcha
       def captcha_valid?
-        errors.add(:captcha, :invalid) if @captcha.blank? or @captcha_verification.blank? or @captcha.to_s.upcase != @captcha_verification.to_s 
+        return unless @captcha.blank? || @captcha_verification.blank? || !captcha_verification_match?
+        errors.add(:captcha, :invalid)
       end
       alias_method :valid_captcha?, :captcha_valid?
+
+      def captcha_verification_match?
+        @captcha.to_s.upcase == @captcha_verification.to_s.upcase
+      end
     end
   end
 end
