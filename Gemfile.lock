@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     easy_captcha (0.7.0)
-      rails (>= 4.1.0)
+      rails (>= 5.0.0)
       rmagick (>= 2.13.1)
 
 GEM
@@ -63,6 +63,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    ast (2.4.1)
     builder (3.2.4)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
@@ -88,6 +89,9 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    parallel (1.20.0)
+    parser (2.7.2.0)
+      ast (~> 2.4.1)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -117,7 +121,10 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
+    rainbow (3.0.0)
     rake (13.0.1)
+    regexp_parser (1.8.2)
+    rexml (3.2.4)
     rmagick (4.1.2)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
@@ -136,6 +143,24 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
+    rubocop (1.2.0)
+      parallel (~> 1.10)
+      parser (>= 2.7.1.5)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8)
+      rexml
+      rubocop-ast (>= 1.0.1)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
+    rubocop-ast (1.1.1)
+      parser (>= 2.7.1.5)
+    rubocop-performance (1.8.1)
+      rubocop (>= 0.87.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rspec (2.0.0)
+      rubocop (~> 1.0)
+      rubocop-ast (>= 1.1.0)
+    ruby-progressbar (1.10.1)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -151,6 +176,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
+    unicode-display_width (1.7.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -161,9 +187,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (>= 1.1.0)
+  bundler (>= 2.1.0)
   easy_captcha!
   rspec-rails (>= 2.8.1)
+  rubocop (>= 1.0)
+  rubocop-performance (>= 1.0)
+  rubocop-rspec (>= 2.0)
   simplecov (>= 0.3.8)
   yard (>= 0.7.0)
 
