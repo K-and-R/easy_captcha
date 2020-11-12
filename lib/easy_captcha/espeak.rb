@@ -52,28 +52,28 @@ module EasyCaptcha
 
     # generate wav file by captcha
     def generate(captcha, wav_file)
-      # get code
-      if captcha.is_a? Captcha
-        code = captcha.code
-      elsif captcha.is_a? String
-        code = captcha
-      else
-        raise ArgumentError, "invalid captcha"
-      end
-
-      # add spaces
-      code = code.each_char.to_a.join(" ")
-
-      cmd = "espeak -g 10"
+      cmd = 'espeak -g 10'
       cmd << " -a #{amplitude}" unless @amplitude.nil?
       cmd << " -p #{pitch}" unless @pitch.nil?
       cmd << " -g #{gap}" unless @gap.nil?
       cmd << " -v '#{voice}'" unless @voice.nil?
-      cmd << " -w #{wav_file} '#{code}'"
+      cmd << " -w #{wav_file} '#{get_code(captcha)}'"
 
-      %x{#{cmd}}
+      `#{cmd}`
       true
     end
 
+    def get_code(captcha)
+      case captcha
+      when Captcha
+        code = captcha.code
+      when String
+        code = captcha
+      else
+        fail ArgumentError, 'invalid captcha'
+      end
+      # add spaces
+      code.each_char.to_a.join(' ')
+    end
   end
 end
