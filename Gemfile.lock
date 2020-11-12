@@ -1,13 +1,9 @@
 PATH
   remote: .
   specs:
-    easy_captcha (0.6.5)
-      bundler (>= 1.1.0)
-      rails (>= 3.0.0)
+    easy_captcha (0.7.0)
+      rails (>= 4.1.0)
       rmagick (>= 2.13.1)
-      rspec-rails (>= 2.8.1)
-      simplecov (>= 0.3.8)
-      yard (>= 0.7.0)
 
 GEM
   remote: http://rubygems.org/
@@ -89,7 +85,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    nio4r (2.5.2)
+    nio4r (2.5.4)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     rack (2.2.3)
@@ -147,7 +143,7 @@ GEM
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
@@ -155,7 +151,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    websocket-driver (0.7.2)
+    websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     yard (0.9.25)
@@ -165,7 +161,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (>= 1.1.0)
   easy_captcha!
+  rspec-rails (>= 2.8.1)
+  simplecov (>= 0.3.8)
+  yard (>= 0.7.0)
 
 BUNDLED WITH
    2.1.4
