@@ -105,6 +105,7 @@ module EasyCaptcha
           gravit = [Magick::NorthWestGravity, Magick::NorthGravity, Magick::NorthEastGravity, Magick::WestGravity,
                      Magick::CenterGravity, Magick::EastGravity, Magick::SouthWestGravity, Magick::SouthGravity,
                      Magick::SouthEastGravity].sample
+        end
 
         # Combine images if background image is present
         if config.background_image.present?
