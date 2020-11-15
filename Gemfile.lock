@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    easy_captcha (0.7.0)
+    easy_captcha (0.8.0)
       rails (>= 5.0.0)
       rmagick (>= 2.13.1)
 
