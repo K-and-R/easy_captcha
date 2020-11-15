@@ -30,14 +30,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('rails', ['>= 5.0.0'])
 
-  s.add_development_dependency('bundler', ['>= 2.1.0'])
-  s.add_development_dependency('rspec-rails', ['>= 2.8.1'])
-  s.add_development_dependency('rubocop', ['>= 1.0'])
-  s.add_development_dependency('rubocop-performance', ['>= 1.0'])
-  s.add_development_dependency('rubocop-rspec', ['>= 2.0'])
-  s.add_development_dependency('simplecov', ['>= 0.3.8'])
-  s.add_development_dependency('yard', ['>= 0.7.0'])
-
   if defined?(PLATFORM) && PLATFORM == 'java'
     s.add_runtime_dependency('rmagick4j', '>= 0.3.7')
   else
