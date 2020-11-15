@@ -9,14 +9,14 @@ describe EasyCaptcha do
       config.cache = false
 
       # Chars
-      config.chars = %w[2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z]
+      config.captcha_character_pool = %w[2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z]
 
       # Image
-      config.image_height = 40
-      config.image_width = 140
+      config.captcha_image_height = 40
+      config.captcha_image_width = 140
 
       # Length
-      config.length = 6
+      config.captcha_character_count = 6
 
       # configure generator
       config.generator :default do |generator|
@@ -83,11 +83,11 @@ describe EasyCaptcha do
       before do
         described_class.setup do |config|
           # Image
-          config.image_height = 40
-          config.image_width = 140
+          config.captcha_image_height = 40
+          config.captcha_image_width = 140
 
           # Length
-          config.length = 6
+          config.captcha_character_count = 6
 
           config.generator :default do |generator|
             # Blur

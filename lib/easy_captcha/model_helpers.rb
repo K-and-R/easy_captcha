@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module EasyCaptcha
   module ModelHelpers #:nodoc:
     # helper class for ActiveRecord
     def self.included(base) #:nodoc:
       base.extend ClassMethods
     end
-    
+
     module ClassMethods #:nodoc:
       # to activate model captcha validation
       def acts_as_easy_captcha
@@ -14,9 +16,8 @@ module EasyCaptcha
     end
 
     module InstanceMethods #:nodoc:
-
-      def captcha  #:nodoc:
-        ""
+      def captcha #:nodoc:
+        ''
       end
 
       # validate captcha
@@ -27,7 +28,7 @@ module EasyCaptcha
       alias_method :valid_captcha?, :captcha_valid?
 
       def captcha_verification_match?
-        @captcha.to_s.upcase == @captcha_verification.to_s.upcase
+        @captcha.to_s.casecmp(@captcha_verification.to_s).zero?
       end
     end
   end

@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
     'LICENSE.txt',
     'README.rdoc'
   ]
-  s.files = `git ls-files`.split("\n")
+  s.files = `git ls-files -- {README.rdoc,LICENSE.txt,lib,resources}`.split("\n")
 
   s.homepage = 'http://github.com/K-and-R/easy_captcha'
   s.licenses = ['MIT']
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.summary = 'Captcha-Plugin for Rails'
 
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  s.test_files    = `git ls-files -- {spec}/*`.split("\n")
+  s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ['lib']
 
   s.add_dependency('rails', ['>= 5.0.0'])

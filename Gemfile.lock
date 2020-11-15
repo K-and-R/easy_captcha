@@ -231,7 +231,7 @@ DEPENDENCIES
   pry-plus!
   pry-rails
   pry-stack_explorer (= 0.4.9.3)
-  rspec-rails (>= 2.8.1)
+  rspec-rails (>= 4.0.1)
   rubocop (>= 1.0)
   rubocop-performance (>= 1.0)
   rubocop-rspec (>= 2.0)
