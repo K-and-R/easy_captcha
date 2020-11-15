@@ -12,3 +12,6 @@ doc
 pkg
 
 .DS_Store
+
+# Node packages
+node_modules
