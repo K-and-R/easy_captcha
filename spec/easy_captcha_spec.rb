@@ -127,8 +127,20 @@ describe EasyCaptcha do
         end
       end
 
-      it 'raises method_missing on non-depracations' do
+      it 'raises NoMethodError on missing non-depracations' do
+        expect { described_class.send(EasyCaptcha::DEPRECATED_METHODS.first) }.not_to raise_error(NoMethodError)
+      end
+
+      it 'does not raise NoMethodError on depracations' do
         expect { described_class.send(:a_missing_method) }.to raise_error(NoMethodError)
+      end
+
+      it 'does not respond_to? depracations' do
+        expect(described_class).not_to respond_to(EasyCaptcha::DEPRECATED_METHODS.first)
+      end
+
+      it 'does not respond_to? missing non-depracations' do
+        expect(described_class).not_to respond_to(:a_missing_method)
       end
     end
   end
