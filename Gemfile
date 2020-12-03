@@ -68,7 +68,8 @@ gem 'rubocop-performance', '>= 1.0'
 gem 'rubocop-rspec', '>= 2.0'
 
 # Simplecov for code coverage reporting
-gem 'simplecov', '>= 0.3.8'
+# gem 'simplecov', '>= 0.20.0'
+gem 'simplecov', '>= 0.17.0', '< 0.18'
 
 # For generating documentation
 gem 'yard', '>= 0.7.0'
