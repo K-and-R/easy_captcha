@@ -1,25 +1,42 @@
-= EasyCaptcha
-A simple captcha implementation for rails 3 based on rmagick
+= EasyCAPTCHA
 
-Tested with Rails 3.2.8
+A simple captcha implementation for Rails 5+ based on RMagick.
 
-https://travis-ci.org/phatworx/easy_captcha.png
+This (`kandr-easy_captcha`) is a fork of [EasyCaptcha](https://github.com/phatworx/easy_captcha) (`easy_captcha`) with Rails 5+ support. This fork is maintained by Karl Wilbur/K&R Software (karl@kandrsoftware.com).
+
+== Dependencies
+
+RMagick should be included in your `Gemfile`
+
+```
+  gem 'rmagick'
+```
+
+for Java/JRuby you can use
+
+```ruby
+  gem 'rmagick4j'
+```
 
 == Installation
+
 add to Gemfile
-  gem 'easy_captcha'
-  gem 'rmagick'
 
-for java you can use
+```ruby
+  gem 'kandr-easy_captcha', require: 'easy_captcha'
+```
 
-  gem 'rmagick4j'
+after running `bundle install`, execute
 
-after bundle execute
+```bash
   rails g easy_captcha:install
+```
 
 == Configuration
-You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you want to customize the default configuration
 
+You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if you want to customize the default configuration
+
+```ruby
   EasyCaptcha.setup do |config|
     # Cache
     # config.cache          = true
@@ -90,10 +107,13 @@ You can configure easy_captcha in "config/initializers/easy_captcha.rb", if you 
       # generator.blur_sigma             = 2
     # end
   end
+```
 
 == Caching
+
 It is strongly recommended to enable caching. You can see the three paramters which you have to fill in your config file below.
 
+```ruby
   EasyCaptcha.setup do |config|
     # Cache
     config.cache          = true
@@ -104,6 +124,7 @@ It is strongly recommended to enable caching. You can see the three paramters wh
     # Cache size
     # config.cache_size     = 500
   end
+```
 
 == Requirements
 
@@ -112,6 +133,7 @@ It is strongly recommended to enable caching. You can see the three paramters wh
 
 == Example
 
+```ruby
   <% form_tag '/' do %>
     <% if request.post? %>
       <p><%= valid_captcha?(params[:captcha]) ? 'valid' : 'invalid' %> captcha</p>
@@ -120,11 +142,14 @@ It is strongly recommended to enable caching. You can see the three paramters wh
     <p><%= text_field_tag :captcha %></p>
     <p><%= submit_tag 'Validate' %></p>
   <% end %>
+```
 
 == Example app
+
 You find an example app under: http://github.com/phatworx/easy_captcha_example
 
 == History
+
 * 0.1 init
 * 0.2 cache support for high frequented sites
 * 0.3 use generators, optimizations, update licence to same of all my plugins

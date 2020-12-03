@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module EasyCaptcha
   module Generators #:nodoc:
     class InstallGenerator < Rails::Generators::Base #:nodoc:
-      source_root File.expand_path("../../templates", __FILE__)
+      source_root File.expand_path('../templates', __dir__)
 
-      desc "Install easy_captcha"
+      desc 'Install easy_captcha'
 
       def copy_initializer #:nodoc:
-        template "easy_captcha.rb", "config/initializers/easy_captcha.rb"
+        template 'easy_captcha.rb', 'config/initializers/easy_captcha.rb'
       end
 
       def add_devise_routes #:nodoc:
@@ -14,7 +16,7 @@ module EasyCaptcha
       end
 
       def add_after_filter #:nodoc:
-        inject_into_class "app/controllers/application_controller.rb", ApplicationController do
+        inject_into_class 'app/controllers/application_controller.rb', ApplicationController do
           "  # reset captcha code after each request for security\n  after_filter :reset_last_captcha_code!\n\n"
         end
       end

@@ -1,4 +1,5 @@
-# encoding: utf-8
+# frozen_string_literal: true
+
 module EasyCaptcha
   # captcha generation class
   class Captcha
@@ -8,7 +9,7 @@ module EasyCaptcha
     attr_reader :image
 
     # generate captcha by code
-    def initialize code
+    def initialize(code)
       @code = code
       generate_captcha
     end
