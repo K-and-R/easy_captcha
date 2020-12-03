@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    easy_captcha (0.8.0)
+    kandr-easy_captcha (0.8.0)
       rails (>= 5.0.0)
       rmagick (>= 2.13.1)
 
@@ -228,7 +228,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  easy_captcha!
+  kandr-easy_captcha!
   pry
   pry-plus!
   pry-rails

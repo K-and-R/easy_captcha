@@ -15,3 +15,7 @@ pkg
 
 # Node packages
 node_modules
+
+# build files
+*.gem
+
