@@ -5,14 +5,27 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.9.0 (TBD)
 
-* [karlwilbur] - Add tests for `EasyCaptcha::Captcha`
-* [karlwilbur] - Modify comments and order of config options in initializer template
-* [karlwilbur] - Remove deprecation warnings for deprecated methods which were already removed
-* [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
+### Additions
+
+* [karlwilbur] - Add tests for:
+
+    - `EasyCaptcha::Captcha`
+    - `EasyCaptcha::ModelHelpers`
+
 * [karlwilbur] - Add `mdl` gem dev dependency; run linters using `bundle exec`
 * [karlwilbur] - Add `CHANGELOG`
 * [karlwilbur] - Add CodeClimate badges to `README`
+
+### Modifications/Fixes
+
+* [karlwilbur] - Fix logic in `EasyCaptcha::ModelHelper#captcha_valid?`
+* [karlwilbur] - Modify comments and order of config options in initializer template
+* [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
 * [karlwilbur] - Lock Simplecov version until CodeClimate Test Reporter is updated
+
+### Deletions/Removals
+
+* [karlwilbur] - Remove deprecation warnings for deprecated methods which were already removed
 
 ## 0.8.0 (2020-12-03)
 
