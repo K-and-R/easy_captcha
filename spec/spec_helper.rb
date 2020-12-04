@@ -7,7 +7,9 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'simplecov'
 SimpleCov.start 'rails' do
   # Ignore initilalizer template
-  add_filter '/lib/generators/templates/'
+  add_filter 'lib/generators/templates/'
+  # Ignore version file because it already loaded and won't be detected by SimpleCov
+  add_filter 'lib/easy_captcha/version'
 end
 
 # require 'rails/all'

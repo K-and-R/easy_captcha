@@ -30,7 +30,7 @@ class EasyCaptchaTestModel
   end
 end
 
-RSpec.describe EasyCaptcha::ModelHelpers, type: :helpers do
+RSpec.describe EasyCaptcha::ModelHelpers, type: :helper do
   let(:model) { EasyCaptchaTestModel.new }
 
   it 'is included in the ActiveRecord helpers' do

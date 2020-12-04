@@ -3,6 +3,10 @@
 require 'spec_helper'
 
 describe EasyCaptcha do
+  it 'has a VERSION' do
+    expect(described_class::VERSION).not_to be_blank
+  end
+
   describe '#setup' do
     context 'when using defaults' do
       it 'does not require a block to be given' do

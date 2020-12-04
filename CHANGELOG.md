@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
     - `EasyCaptcha::Captcha`
     - `EasyCaptcha::ModelHelpers`
+    - `EasyCaptcha::ViewHelpers`
     - `EasyCaptcha::Espeak` WAV file generation
     - `EasyCaptcha::Generators::InstallGenerator`
 
@@ -20,8 +21,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Modifications/Fixes
 
-* [karlwilbur] - Refactor `Easycaptcha::Espeak` to use `DEFAULT_CONFIG` constant
-* [karlwilbur] - Reduce complxity of `Easycaptcha::Espeak#generate`
+* [karlwilbur] - Refactor `EasyCaptcha::Espeak` to use `DEFAULT_CONFIG` constant
+* [karlwilbur] - Reduce complexity of `EasyCaptcha::Espeak#generate`
 * [karlwilbur] - Fix logic in `EasyCaptcha::ModelHelper#captcha_valid?`
 * [karlwilbur] - Modify comments and order of config options in initializer template
 * [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
