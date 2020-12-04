@@ -45,15 +45,34 @@ module EasyCaptcha
 
     # generate wav file by captcha
     def generate(captcha, wav_file)
-      cmd = ['espeak -g 10']
-      cmd << "-a #{amplitude}" unless @amplitude.nil?
-      cmd << "-p #{pitch}" unless @pitch.nil?
-      cmd << "-g #{gap}" unless @gap.nil?
-      cmd << "-v '#{voice}'" unless @voice.nil?
-      cmd << "-w #{wav_file} '#{get_code(captcha)}'"
+      cmd = [
+        'espeak -g 10',
+        espeak_amplitude_param,
+        espeak_pitch_param,
+        espeak_gap_param,
+        espeak_voice_param,
+        "-w #{wav_file}",
+        "'#{get_code(captcha)}'"
+      ].compact.join(' ')
 
-      `#{cmd.join(' ')}`
+      `#{cmd}`
       true
+    end
+
+    def espeak_amplitude_param
+      "-a #{amplitude}" unless @amplitude.nil?
+    end
+
+    def espeak_pitch_param
+      "-p #{pitch}" unless @pitch.nil?
+    end
+
+    def espeak_gap_param
+      "-g #{gap}" unless @gap.nil?
+    end
+
+    def espeak_voice_param
+      "-v '#{voice}'" unless @voice.nil?
     end
 
     def get_code(captcha)
