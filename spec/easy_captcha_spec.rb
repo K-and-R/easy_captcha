@@ -61,54 +61,5 @@ describe EasyCaptcha do
         expect(described_class).not_to be_cache
       end
     end
-
-    describe '#depracations' do
-      let(:config_methods) do
-        %i[
-          blur
-          blur_radius
-          blur_sigma
-          font_family
-          font_fill_color
-          font_size
-          font_stroke
-          font_stroke_color
-          image_background_color
-          implode
-          sketch
-          sketch_radius
-          sketch_sigma
-          wave
-          wave_amplitude
-          wave_length
-        ]
-      end
-
-      before do
-        described_class.setup
-      end
-
-      it 'returns non-nil for config methods' do
-        config_methods.each do |opt|
-          expect(described_class.generator.send(opt)).not_to be_nil
-        end
-      end
-
-      it 'raises NoMethodError on missing non-depracations' do
-        expect { described_class.send(EasyCaptcha::DEPRECATED_METHODS.first) }.not_to raise_error(NoMethodError)
-      end
-
-      it 'does not raise NoMethodError on depracations' do
-        expect { described_class.send(:a_missing_method) }.to raise_error(NoMethodError)
-      end
-
-      it 'does not respond_to? depracations' do
-        expect(described_class).not_to respond_to(EasyCaptcha::DEPRECATED_METHODS.first)
-      end
-
-      it 'does not respond_to? missing non-depracations' do
-        expect(described_class).not_to respond_to(:a_missing_method)
-      end
-    end
   end
 end
