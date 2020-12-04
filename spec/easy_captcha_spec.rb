@@ -4,58 +4,62 @@ require File.expand_path("#{File.dirname(__FILE__)}/spec_helper")
 
 describe EasyCaptcha do
   describe '#setup' do
-    described_class.setup do |config|
-      # Cache
-      config.cache = false
+    context 'when using defaults' do
+      it 'does not require a block to be given' do
+        expect { described_class.setup }.not_to raise_error
+      end
 
-      # Chars
-      config.captcha_character_pool = %w[2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z]
+      it 'will use defaults if no block given' do
+        described_class.setup
+      end
 
-      # Image
-      config.captcha_image_height = 40
-      config.captcha_image_width = 140
-
-      # Length
-      config.captcha_character_count = 6
-
-      # configure generator
-      config.generator :default do |generator|
-        # Blur
-        generator.blur = true
-        generator.blur_radius = 1
-        generator.blur_sigma = 2
-
-        # Font
-        generator.font_size = 24
-        generator.font_fill_color = '#333333'
-        generator.font_stroke_color = '#000000'
-        generator.font_stroke = 0
-        generator.font_family = File.expand_path('../resources/afont.ttf', __dir__)
-
-        # Image background
-        generator.image_background_color = '#FFFFFF'
-
-        # Implode
-        generator.implode = 0.1
-
-        # Sketch
-        generator.sketch = true
-        generator.sketch_radius = 3
-        generator.sketch_sigma = 1
-
-        # Wave
-        generator.wave = true
-        generator.wave_length = (60..100)
-        generator.wave_amplitude = (3..5)
+      it 'has default generator' do
+        expect(described_class.generator).to be_an(EasyCaptcha::Generator::Default)
       end
     end
 
-    it 'does not cache' do
-      expect(described_class).not_to be_cache
-    end
+    context 'when chaging defaults' do
+      let(:captcha_config_options) do
+        {
+          cache: false,
+          captcha_character_pool: %w[2 4 6 8 A E I O U],
+          captcha_image_height: 6,
+          captcha_image_width: 9,
+          captcha_character_count: 6
+        }
+      end
 
-    it 'has default generator' do
-      expect(described_class.generator).to be_an(EasyCaptcha::Generator::Default)
+      let(:generator_config_options) do
+        {
+          blur: true,
+          blur_radius: 1,
+          blur_sigma: 2,
+          font_size: 24,
+          font_fill_color: '#333333',
+          font_stroke_color: '#000000',
+          font_stroke: 0,
+          font_family: File.expand_path('../resources/afont.ttf', __dir__),
+          image_background_color: '#FFFFFF',
+          implode: 0.1,
+          sketch: true,
+          sketch_radius: 3,
+          sketch_sigma: 1,
+          wave: true,
+          wave_length: (60..100),
+          wave_amplitude: (3..5)
+        }
+      end
+
+      before do
+        described_class.setup do |config|
+          captcha_config_options.each { |k, v| config.send("#{k}=", v) }
+          config.generator(:default) { |generator| generator_config_options.each { |k, v| generator.send("#{k}=", v) } }
+        end
+      end
+
+      it 'does not cache' do
+        expect(described_class).not_to be_cache
+      end
     end
 
     describe '#depracations' do
@@ -81,44 +85,7 @@ describe EasyCaptcha do
       end
 
       before do
-        described_class.setup do |config|
-          # Image
-          config.captcha_image_height = 40
-          config.captcha_image_width = 140
-
-          # Length
-          config.captcha_character_count = 6
-
-          config.generator :default do |generator|
-            # Blur
-            generator.blur = true
-            generator.blur_radius = 1
-            generator.blur_sigma = 2
-
-            # Font
-            generator.font_size = 24
-            generator.font_fill_color = '#333333'
-            generator.font_stroke_color = '#000000'
-            generator.font_stroke = 0
-            generator.font_family = File.expand_path('../resources/afont.ttf', __dir__)
-
-            # Image background
-            generator.image_background_color = '#FFFFFF'
-
-            # Implode
-            generator.implode = 0.1
-
-            # Sketch
-            generator.sketch = true
-            generator.sketch_radius = 3
-            generator.sketch_sigma = 1
-
-            # Wave
-            generator.wave = true
-            generator.wave_length = (60..100)
-            generator.wave_amplitude = (3..5)
-          end
-        end
+        described_class.setup
       end
 
       it 'returns non-nil for config methods' do

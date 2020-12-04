@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.9.0 (TBD)
 
+* [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
 * [karlwilbur] - Add `mdl` gem dev dependency; run linters using `bundle exec`
 * [karlwilbur] - Add `CHANGELOG`
 * [karlwilbur] - Add CodeClimate badges to `README`

@@ -73,7 +73,7 @@ module EasyCaptcha
       DEFAULT_CONFIG.map do |k, v|
         send("#{k}=", v) if respond_to? "#{k}=".to_sym
       end
-      yield self
+      yield self if block_given?
     end
 
     def cache? #:nodoc:
