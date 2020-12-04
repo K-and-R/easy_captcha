@@ -1,10 +1,13 @@
-= EasyCAPTCHA
+[![Maintainability](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/maintainability)](https://codeclimate.com/github/K-and-R/easy_captcha/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/test_coverage)](https://codeclimate.com/github/K-and-R/easy_captcha/test_coverage)
+
+# EasyCAPTCHA
 
 A simple captcha implementation for Rails 5+ based on RMagick.
 
 This (`kandr-easy_captcha`) is a fork of [EasyCaptcha](https://github.com/phatworx/easy_captcha) (`easy_captcha`) with Rails 5+ support. This fork is maintained by Karl Wilbur/K&R Software (karl@kandrsoftware.com).
 
-== Dependencies
+## Dependencies
 
 RMagick should be included in your `Gemfile`
 
@@ -18,7 +21,7 @@ for Java/JRuby you can use
   gem 'rmagick4j'
 ```
 
-== Installation
+## Installation
 
 add to Gemfile
 
@@ -32,7 +35,7 @@ after running `bundle install`, execute
   rails g easy_captcha:install
 ```
 
-== Configuration
+## Configuration
 
 You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if you want to customize the default configuration
 
@@ -109,7 +112,7 @@ You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if yo
   end
 ```
 
-== Caching
+## Caching
 
 It is strongly recommended to enable caching. You can see the three paramters which you have to fill in your config file below.
 
@@ -126,12 +129,12 @@ It is strongly recommended to enable caching. You can see the three paramters wh
   end
 ```
 
-== Requirements
+## Requirements
 
 * RMagick
 * Rails 3 (http://github.com/rails/rails)
 
-== Example
+## Example
 
 ```ruby
   <% form_tag '/' do %>
@@ -144,11 +147,11 @@ It is strongly recommended to enable caching. You can see the three paramters wh
   <% end %>
 ```
 
-== Example app
+## Example app
 
 You find an example app under: http://github.com/phatworx/easy_captcha_example
 
-== History
+## History
 
 * 0.1 init
 * 0.2 cache support for high frequented sites
@@ -157,14 +160,14 @@ You find an example app under: http://github.com/phatworx/easy_captcha_example
 * 0.5 (transparent) background support
 * 0.6 espeak support for barrier-free support
 
-== Maintainers
+## Maintainers
 
 * Team Phatworx (http://github.com/phatworx)
 * Marco Scholl (http://github.com/traxanos)
 * Alexander Dreher (http://github.com/alexdreher)
 * Christoph Chilian (http://github.com/cc-web)
 
-== Contributing to EasyCaptcha
+## Contributing to EasyCaptcha
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -174,6 +177,6 @@ You find an example app under: http://github.com/phatworx/easy_captcha_example
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2010 Marco Scholl. See LICENSE.txt for further details.
