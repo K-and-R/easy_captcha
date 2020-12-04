@@ -1,17 +1,22 @@
+# EasyCAPTCHA
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/maintainability)](https://codeclimate.com/github/K-and-R/easy_captcha/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/test_coverage)](https://codeclimate.com/github/K-and-R/easy_captcha/test_coverage)
 
-# EasyCAPTCHA
-
 A simple captcha implementation for Rails 5+ based on RMagick.
 
-This (`kandr-easy_captcha`) is a fork of [EasyCaptcha](https://github.com/phatworx/easy_captcha) (`easy_captcha`) with Rails 5+ support. This fork is maintained by Karl Wilbur/K&R Software (karl@kandrsoftware.com).
+This (`kandr-easy_captcha`) is a fork of
+[EasyCaptcha](https://github.com/phatworx/easy_captcha) (`easy_captcha`) with Rails 5+ support. This fork is
+maintained by Karl Wilbur/K&R Software (karl@kandrsoftware.com).
 
-## Dependencies
+## Dependencies/Requirements
+
+* Rails 5+ (<http://github.com/rails/rails />)
+* RMagick
 
 RMagick should be included in your `Gemfile`
 
-```
+```ruby
   gem 'rmagick'
 ```
 
@@ -37,7 +42,8 @@ after running `bundle install`, execute
 
 ## Configuration
 
-You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if you want to customize the default configuration
+You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if
+you want to customize the default configuration
 
 ```ruby
   EasyCaptcha.setup do |config|
@@ -114,7 +120,8 @@ You can configure `easy_captcha` in `config/initializers/easy_captcha.rb`, if yo
 
 ## Caching
 
-It is strongly recommended to enable caching. You can see the three paramters which you have to fill in your config file below.
+It is strongly recommended to enable caching. You can see the three paramters which you have to fill in your config
+file below.
 
 ```ruby
   EasyCaptcha.setup do |config|
@@ -128,11 +135,6 @@ It is strongly recommended to enable caching. You can see the three paramters wh
     # config.cache_size     = 500
   end
 ```
-
-## Requirements
-
-* RMagick
-* Rails 3 (http://github.com/rails/rails)
 
 ## Example
 
@@ -149,23 +151,16 @@ It is strongly recommended to enable caching. You can see the three paramters wh
 
 ## Example app
 
-You find an example app under: http://github.com/phatworx/easy_captcha_example
+You find an example app under: <http://github.com/phatworx/easy_captcha_example />
 
 ## History
 
-* 0.1 init
-* 0.2 cache support for high frequented sites
-* 0.3 use generators, optimizations, update licence to same of all my plugins
-* 0.4 generator support
-* 0.5 (transparent) background support
-* 0.6 espeak support for barrier-free support
+See the [[./CHANGELOG.md]]
 
 ## Maintainers
 
-* Team Phatworx (http://github.com/phatworx)
-* Marco Scholl (http://github.com/traxanos)
-* Alexander Dreher (http://github.com/alexdreher)
-* Christoph Chilian (http://github.com/cc-web)
+* Karl Wilbur (<http://github.com/karlwilbur />)
+* K&R Software (<http://github.com/K-and-R />)
 
 ## Contributing to EasyCaptcha
 
@@ -175,7 +170,8 @@ You find an example app under: http://github.com/phatworx/easy_captcha_example
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is
+  otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 ## Copyright
 
