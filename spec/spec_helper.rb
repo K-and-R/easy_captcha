@@ -5,7 +5,11 @@ require 'pry'
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  # Ignore initilalizer template
+  add_filter '/lib/generators/templates/'
+end
+
 # require 'rails/all'
 require 'action_controller'
 require 'action_dispatch'
