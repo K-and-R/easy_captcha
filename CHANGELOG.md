@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.9.0 (TBD)
 
+* [karlwilbur] - Modify comments and order of config options in initializer template
 * [karlwilbur] - Remove deprecation warnings for deprecated methods which were already removed
 * [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
 * [karlwilbur] - Add `mdl` gem dev dependency; run linters using `bundle exec`
