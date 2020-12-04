@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require File.expand_path("#{File.dirname(__FILE__)}/../spec_helper")
+require 'spec_helper'
 
 RSpec.describe EasyCaptcha::Captcha do
   let(:captcha_text) { 'asdf246' }
