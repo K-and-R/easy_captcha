@@ -67,6 +67,9 @@ gem 'rubocop-performance', '>= 1.0'
 # Rubocop RSpec evaluation
 gem 'rubocop-rspec', '>= 2.0'
 
+# Markdown lint tool
+gem 'mdl'
+
 # Simplecov for code coverage reporting
 # gem 'simplecov', '>= 0.20.0'
 gem 'simplecov', '>= 0.17.0', '< 0.18'

@@ -23,10 +23,10 @@
         "prettier"
       ],
       "*.md": [
-        "markdownlint"
+        "bundle exec mdl"
       ],
       "{Gemfile,*.{rb,erb}}": [
-        "rubocop --force-exclusion"
+        "bundle exec rubocop --force-exclusion"
       ],
       "*.{yml,yaml}": [
         "yamllint"
@@ -48,7 +48,7 @@
   },
   "scripts": {
     "lint-rb": "bundle exec rubocop .",
-    "lint-md": "markdownlint --ignore node_modules . ",
+    "lint-md": "bundle exec mdl --ignore node_modules . ",
     "lint-yaml": "yamllint ./**/*.{yml,yaml}",
     "lint": "yarn run lint-rb && yarn run lint-md && yarn run lint-yaml && editorconfig-checker",
     "ruby-tests": "bundle exec rspec .",
