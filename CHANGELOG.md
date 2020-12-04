@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
     - `EasyCaptcha::Captcha`
     - `EasyCaptcha::ModelHelpers`
     - `EasyCaptcha::Espeak` WAV file generation
+    - `EasyCaptcha::Generators::InstallGenerator`
 
 * [karlwilbur] - Add `mdl` gem dev dependency; run linters using `bundle exec`
 * [karlwilbur] - Add `CHANGELOG`

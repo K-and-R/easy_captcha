@@ -59,6 +59,8 @@ gem 'pry-plus', github: 'K-and-R/pry-plus'
 
 # RSpec, and its Rails integration for testing
 gem 'rspec-rails', '>= 4.0.1'
+# Ability to test out install generator
+gem 'generator_spec'
 
 # Rubocop for ensuring well written code
 gem 'rubocop', '>= 1.0'
