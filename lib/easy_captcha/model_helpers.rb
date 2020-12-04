@@ -11,24 +11,21 @@ module EasyCaptcha
       # to activate model captcha validation
       def acts_as_easy_captcha
         include InstanceMethods
-        attr_writer :captcha, :captcha_verification
+        attr_accessor :captcha, :captcha_verification
       end
     end
 
     module InstanceMethods #:nodoc:
-      def captcha #:nodoc:
-        ''
-      end
-
       # validate captcha
       def captcha_valid?
-        return unless @captcha.blank? || @captcha_verification.blank? || !captcha_verification_match?
+        return true if captcha.present? && captcha_verification.present? && captcha_verification_match?
         errors.add(:captcha, :invalid)
+        false
       end
       alias_method :valid_captcha?, :captcha_valid?
 
       def captcha_verification_match?
-        @captcha.to_s.casecmp(@captcha_verification.to_s).zero?
+        captcha.to_s.casecmp(captcha_verification.to_s).zero?
       end
     end
   end
