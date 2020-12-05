@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * [karlwilbur] - Add tests for:
 
     - `EasyCaptcha::Captcha`
+    - `EasyCaptcha::CaptchaController`
     - `EasyCaptcha::ModelHelpers`
     - `EasyCaptcha::ViewHelpers`
     - `EasyCaptcha::Espeak` WAV file generation
