@@ -24,26 +24,26 @@ module EasyCaptcha
     # generate speech by captcha from session
     def generate_speech_captcha
       fail 'espeak disabled' unless EasyCaptcha.espeak?
-      if EasyCaptcha.cache && cache_audio_file_exists?(current_captcha_code)
-        load_cache_audio_file(current_captcha_code)
+      if EasyCaptcha.cache && cache_audio_file_exists?
+        load_cache_audio_file
       else
-        new_cache_audio_file(current_captcha_code)
+        new_audio_captcha_file
       end
     end
 
     # return cache path of captcha image
-    def captcha_cache_path(code)
-      "#{EasyCaptcha.cache_temp_dir}/#{code}.png"
+    def captcha_cache_path
+      "#{EasyCaptcha.cache_temp_dir}/#{current_captcha_code}.png"
     end
 
     # return cache path of speech captcha
-    def speech_captcha_cache_path(code)
-      "#{EasyCaptcha.cache_temp_dir}/#{code}.wav"
+    def speech_captcha_cache_path
+      "#{EasyCaptcha.cache_temp_dir}/#{current_captcha_code}.wav"
     end
 
     # current active captcha from session
     def current_captcha_code
-      session[:captcha]
+      session[:captcha] ||= generate_captcha_code
     end
 
     # generate captcha code, save in session and return
@@ -138,21 +138,21 @@ module EasyCaptcha
         return image if image
       end
       # Default, if cache not enabled or an expired cache image was chosen, make a new one
-      Captcha.new(generate_captcha_code).image
+      Captcha.new(current_captcha_code).image
     end
 
-    def load_cache_audio_file(code)
-      File.read(speech_captcha_cache_path(code))
+    def load_cache_audio_file
+      File.read(speech_captcha_cache_path)
     end
 
-    def new_cache_audio_file(code)
-      wav_file = Tempfile.new("#{code}.wav")
-      EasyCaptcha.espeak.generate(code, wav_file.path)
+    def new_audio_captcha_file
+      wav_file = Tempfile.new("#{current_captcha_code}.wav")
+      EasyCaptcha.espeak.generate(current_captcha_code, wav_file.path)
       File.read(wav_file.path)
     end
 
-    def cache_audio_file_exists?(code)
-      File.exist?(speech_captcha_cache_path(code))
+    def cache_audio_file_exists?
+      File.exist?(speech_captcha_cache_path)
     end
   end
   # rubocop:enable Metrics/ModuleLength
