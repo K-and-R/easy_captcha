@@ -63,18 +63,8 @@ module EasyCaptcha
 
     # select generator and configure this
     def generator(generator = nil, &block)
-      if generator.nil?
-        @generator
-      else
-        generator = generator.to_s if generator.is_a? Symbol
-
-        if generator.is_a? String
-          generator.gsub!(/^[a-z]|\s+[a-z]/, &:upcase)
-          generator = "EasyCaptcha::Generator::#{generator}".constantize
-        end
-
-        @generator = generator.new(&block)
-      end
+      resolve_generator(generator, &block) unless generator.nil?
+      @generator
     end
 
     def espeak=(state)
@@ -98,6 +88,17 @@ module EasyCaptcha
 
       # set default generator
       generator :default
+    end
+
+    private
+
+    def resolve_generator(generator, &block)
+      generator = generator.to_s if generator.is_a? Symbol
+      if generator.is_a? String
+        generator.gsub!(/^[a-z]|\s+[a-z]/, &:upcase)
+        generator = "EasyCaptcha::Generator::#{generator}".constantize
+      end
+      @generator = generator.new(&block)
     end
   end
 end

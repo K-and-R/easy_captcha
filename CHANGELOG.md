@@ -23,6 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * [karlwilbur] - Refactor `EasyCaptcha::Espeak` to use `DEFAULT_CONFIG` constant
 * [karlwilbur] - Reduce complexity of `EasyCaptcha::Espeak#generate`
+* [karlwilbur] - Reduce complexity of `EasyCaptcha#generator`
 * [karlwilbur] - Fix logic in `EasyCaptcha::ModelHelper#captcha_valid?`
 * [karlwilbur] - Modify comments and order of config options in initializer template
 * [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
