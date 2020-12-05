@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
     - `EasyCaptcha::Captcha`
     - `EasyCaptcha::CaptchaController`
+    - `EasyCaptcha::ControllerHelpers`
     - `EasyCaptcha::ModelHelpers`
     - `EasyCaptcha::ViewHelpers`
     - `EasyCaptcha::Espeak` WAV file generation
@@ -26,6 +27,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * [karlwilbur] - Reduce complexity of `EasyCaptcha::Espeak#generate`
 * [karlwilbur] - Reduce complexity of `EasyCaptcha#generator`
 * [karlwilbur] - Fix logic in `EasyCaptcha::ModelHelper#captcha_valid?`
+* [karlwilbur] - Fix bug in audio CAPTCHA generation
 * [karlwilbur] - Modify comments and order of config options in initializer template
 * [karlwilbur] - Allow `EasyCaptcha#setup` to be called without a block to use defaults
 * [karlwilbur] - Lock Simplecov version until CodeClimate Test Reporter is updated
