@@ -248,6 +248,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack
+  activesupport
   generator_spec
   kandr-easy_captcha!
   mdl

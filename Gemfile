@@ -48,6 +48,12 @@ gemspec
 
 # These are all development dependencies, since the Gemfile is only used in development
 
+# Packages usually installed with Rails
+# actionpack
+gem 'actionpack'
+# activesupport
+gem 'activesupport'
+
 # Pry, and IRB alternative
 gem 'pry'
 # Added  by `pry-plus` but needs to be locked to an earlier version

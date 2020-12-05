@@ -2,18 +2,11 @@
 
 require 'spec_helper'
 
-module EasyCaptchaTestApp
-  class TestApp < ::Rails::Application
-  end
-
-  TestApp.routes.draw do
-    captcha_route
-  end
-end
+require 'fixtures/application'
 
 RSpec.describe EasyCaptcha::CaptchaController, type: :routing do
-  routes { EasyCaptchaTestApp::TestApp.routes }
-  let(:routeset) { EasyCaptchaTestApp::TestApp.routes }
+  routes { Rails.application.routes }
+  let(:routeset) { Rails.application.routes }
   let(:captcha_request) { { get: '/captcha' } }
 
   it 'has added a route' do
