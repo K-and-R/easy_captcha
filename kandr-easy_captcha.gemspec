@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
   s.rubygems_version = '3.1.4'
 
-  s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ['lib']
 

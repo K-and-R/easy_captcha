@@ -48,6 +48,12 @@ gemspec
 
 # These are all development dependencies, since the Gemfile is only used in development
 
+# Packages usually installed with Rails
+# actionpack
+gem 'actionpack'
+# activesupport
+gem 'activesupport'
+
 # Pry, and IRB alternative
 gem 'pry'
 # Added  by `pry-plus` but needs to be locked to an earlier version
@@ -59,6 +65,8 @@ gem 'pry-plus', github: 'K-and-R/pry-plus'
 
 # RSpec, and its Rails integration for testing
 gem 'rspec-rails', '>= 4.0.1'
+# Ability to test out install generator
+gem 'generator_spec'
 
 # Rubocop for ensuring well written code
 gem 'rubocop', '>= 1.0'

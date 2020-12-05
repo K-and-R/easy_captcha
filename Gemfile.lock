@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    kandr-easy_captcha (0.8.0)
+    kandr-easy_captcha (0.9.0)
       rails (>= 5.0.0)
       rmagick (>= 2.13.1)
 
@@ -89,6 +89,9 @@ GEM
     diff-lcs (1.4.4)
     docile (1.3.2)
     erubi (1.10.0)
+    generator_spec (0.9.4)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.5)
@@ -245,6 +248,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack
+  activesupport
+  generator_spec
   kandr-easy_captcha!
   mdl
   pry

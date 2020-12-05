@@ -11,7 +11,7 @@ maintained by Karl Wilbur/K&R Software (karl@kandrsoftware.com).
 
 ## Dependencies/Requirements
 
-* Rails 5+ (<http://github.com/rails/rails />)
+* Rails 5+ (<http://github.com/rails/rails>)
 * RMagick
 
 RMagick should be included in your `Gemfile`
@@ -151,27 +151,25 @@ file below.
 
 ## Example app
 
-You find an example app under: <http://github.com/phatworx/easy_captcha_example />
+You find an example app under: <http://github.com/phatworx/easy_captcha_example>
 
 ## History
 
-See the [[./CHANGELOG.md]]
+See the [CHANGELOG.md](./CHANGELOG.md)
 
 ## Maintainers
 
-* Karl Wilbur (<http://github.com/karlwilbur />)
-* K&R Software (<http://github.com/K-and-R />)
+* Karl Wilbur (<http://github.com/karlwilbur>)
+* K&R Software (<http://github.com/K-and-R>)
 
-## Contributing to EasyCaptcha
+## Contributing to (K&R) EasyCaptcha
 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* See the [TODO.md](./TODO.md) file for a list of needed changes
 * Fork the project
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is
-  otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Make sure to add tests for it!
+* Please do not edit `Rakefile`, `EasyCaptcha::VERSION`, or `CHANGELOG`
 
 ## Copyright
 

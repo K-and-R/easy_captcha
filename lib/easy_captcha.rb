@@ -15,25 +15,6 @@ module EasyCaptcha
   autoload :ControllerHelpers, 'easy_captcha/controller_helpers'
   autoload :Generator, 'easy_captcha/generator'
 
-  DEPRECATED_METHODS = %i[
-    blur
-    blur_radius
-    blur_sigma
-    font_family
-    font_fill_color
-    font_size
-    font_stroke
-    font_stroke_color
-    image_background_color
-    implode
-    sketch
-    sketch_radius
-    sketch_sigma
-    wave
-    wave_amplitude
-    wave_length
-  ].freeze
-
   DEFAULT_CONFIG = {
     cache: false,
     cache_expire: nil,
@@ -73,7 +54,7 @@ module EasyCaptcha
       DEFAULT_CONFIG.map do |k, v|
         send("#{k}=", v) if respond_to? "#{k}=".to_sym
       end
-      yield self
+      yield self if block_given?
     end
 
     def cache? #:nodoc:
@@ -82,18 +63,8 @@ module EasyCaptcha
 
     # select generator and configure this
     def generator(generator = nil, &block)
-      if generator.nil?
-        @generator
-      else
-        generator = generator.to_s if generator.is_a? Symbol
-
-        if generator.is_a? String
-          generator.gsub!(/^[a-z]|\s+[a-z]/, &:upcase)
-          generator = "EasyCaptcha::Generator::#{generator}".constantize
-        end
-
-        @generator = generator.new(&block)
-      end
+      resolve_generator(generator, &block) unless generator.nil?
+      @generator
     end
 
     def espeak=(state)
@@ -109,26 +80,6 @@ module EasyCaptcha
       !espeak.is_a?(FalseClass)
     end
 
-    # catch depracated methods and warn
-    def method_missing(method_name, *args)
-      depracations = EasyCaptcha::DEPRECATED_METHODS
-      # Check for attempts to use both `method_name` and `method_name=`
-      if depracations.include?(method_name.to_s.delete_suffix('=')) || depracations.include?(method_name)
-        ActiveSupport::Deprecation.warn "EasyCaptcha.#{method_name} is deprecated."
-        if method_name[-1, 1] == '='
-          generator.send(method_name, args.first)
-        else
-          generator.send(method_name)
-        end
-      else
-        super
-      end
-    end
-
-    def respond_to_missing?(method_name, include_private = false)
-      EasyCaptcha::DEPRECATED_METHODS.include?(method_name) ? false : super
-    end
-
     def init
       require 'easy_captcha/routes'
       ActiveRecord::Base.include ModelHelpers
@@ -137,6 +88,17 @@ module EasyCaptcha
 
       # set default generator
       generator :default
+    end
+
+    private
+
+    def resolve_generator(generator, &block)
+      generator = generator.to_s if generator.is_a? Symbol
+      if generator.is_a? String
+        generator.gsub!(/^[a-z]|\s+[a-z]/, &:upcase)
+        generator = "EasyCaptcha::Generator::#{generator}".constantize
+      end
+      @generator = generator.new(&block)
     end
   end
 end
