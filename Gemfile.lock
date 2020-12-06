@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    kandr-easy_captcha (0.9.0)
+    kandr-easy_captcha (0.9.1)
       rails (>= 5.0.0)
       rmagick (>= 2.13.1)
 

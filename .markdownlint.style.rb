@@ -118,7 +118,7 @@ rule 'MD023'
 
 # MD024 - Multiple headers with the same content
 # Default: No multiple headers with same content, no duplicate header text
-rule 'MD024'
+rule 'MD024', allow_different_nesting: true
 
 # MD025 - Multiple top level headers in the same document
 # Default: The is onlt one level 1 header; it's the title of the document
