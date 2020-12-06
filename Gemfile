@@ -1,15 +1,5 @@
 # frozen_string_literal: true
 
-# Require specified version of bundler
-bundler_version = File.read(
-  File.expand_path('.bundler-version', __dir__),
-  mode: 'rb'
-).chomp
-if Gem::Version.new(Bundler::VERSION) != Gem::Version.new(bundler_version)
-  abort "Bundler version `#{bundler_version}` is required; "\
-    "Bundler version `#{Bundler::VERSION}` used"
-end
-
 # Determine from where we get our gems
 if File.exist?(File.expand_path('.rubygems-proxy-url', __dir__))
   rubygems_url = File.read(
@@ -36,12 +26,6 @@ end
 git_source(:github_ssh) do |repo_name|
   "git@github.com:#{github_repo_path(repo_name)}.git"
 end
-
-# Determine Ruby version from `.ruby-version` file
-ruby File.read(
-  File.expand_path('.ruby-version', __dir__),
-  mode: 'rb'
-).chomp
 
 # load requirements from the `*.gemspec` file
 gemspec
