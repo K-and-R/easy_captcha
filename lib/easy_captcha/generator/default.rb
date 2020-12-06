@@ -153,7 +153,7 @@ module EasyCaptcha
 
       def canvas
         config = generator_config
-        @canvas = nil if @canvas&.destroyed?
+        @canvas = nil if @canvas.respond_to?('destroyed?') && @canvas.destroyed?
         @canvas ||= Magick::Image.new(EasyCaptcha.captcha_image_width, EasyCaptcha.captcha_image_height) do |_variable|
           self.background_color = config.image_background_color unless config.image_background_color.nil?
           self.background_color = 'none' if config.background_image.present?

@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.10.0 (TBD)
 
+* [karlwilbur] - Fix `Magick::Image#destroyed?` method guard syntax for jRuby support
 * [karlwilbur] - Loosen Rubygems dependency from `>= 3.0.0` to `>= 2.7.0`
 * [karlwilbur] - Add Travis CI badge to `README`
 * [karlwilbur] - Group `development` gems to exclude them from CI builds
