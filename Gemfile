@@ -1,15 +1,5 @@
 # frozen_string_literal: true
 
-# Require specified version of bundler
-bundler_version = File.read(
-  File.expand_path('.bundler-version', __dir__),
-  mode: 'rb'
-).chomp
-if Gem::Version.new(Bundler::VERSION) != Gem::Version.new(bundler_version)
-  abort "Bundler version `#{bundler_version}` is required; "\
-    "Bundler version `#{Bundler::VERSION}` used"
-end
-
 # Determine from where we get our gems
 if File.exist?(File.expand_path('.rubygems-proxy-url', __dir__))
   rubygems_url = File.read(
@@ -37,12 +27,6 @@ git_source(:github_ssh) do |repo_name|
   "git@github.com:#{github_repo_path(repo_name)}.git"
 end
 
-# Determine Ruby version from `.ruby-version` file
-ruby File.read(
-  File.expand_path('.ruby-version', __dir__),
-  mode: 'rb'
-).chomp
-
 # load requirements from the `*.gemspec` file
 gemspec
 
@@ -54,29 +38,13 @@ gem 'actionpack'
 # activesupport
 gem 'activesupport'
 
-# Pry, and IRB alternative
-gem 'pry'
-# Added  by `pry-plus` but needs to be locked to an earlier version
-gem 'pry-stack_explorer', '0.4.9.3'
-# Pry Rails extensions
-gem 'pry-rails'
-# Pry addons, from K&R repo
-gem 'pry-plus', github: 'K-and-R/pry-plus'
-
 # RSpec, and its Rails integration for testing
 gem 'rspec-rails', '>= 4.0.1'
 # Ability to test out install generator
 gem 'generator_spec'
 
-# Rubocop for ensuring well written code
-gem 'rubocop', '>= 1.0'
-# Rubocop performance evaluation
-gem 'rubocop-performance', '>= 1.0'
-# Rubocop RSpec evaluation
-gem 'rubocop-rspec', '>= 2.0'
-
-# Markdown lint tool
-gem 'mdl'
+# Pry, an IRB alternative
+gem 'pry'
 
 # Simplecov for code coverage reporting
 # gem 'simplecov', '>= 0.20.0'
@@ -84,3 +52,22 @@ gem 'simplecov', '>= 0.17.0', '< 0.18'
 
 # For generating documentation
 gem 'yard', '>= 0.7.0'
+
+group :development do
+  # Pry addons, from K&R repo
+  gem 'pry-plus', github: 'K-and-R/pry-plus'
+  # Pry Rails extensions
+  gem 'pry-rails'
+  # Added  by `pry-plus` but needs to be locked to an earlier version
+  gem 'pry-stack_explorer', '0.4.9.3'
+
+  # Rubocop for ensuring well written code
+  gem 'rubocop', '>= 1.0'
+  # Rubocop performance evaluation
+  gem 'rubocop-performance', '>= 1.0'
+  # Rubocop RSpec evaluation
+  gem 'rubocop-rspec', '>= 2.0'
+
+  # Markdown lint tool
+  gem 'mdl'
+end

@@ -1,10 +1,22 @@
 rvm:
-  - 1.9.2
-  - 1.9.3
-  - jruby
+  - 2.5.0
+  - 2.5.8
+  - 2.6.0
+  - 2.6.6
+  - 2.7.0
+  - 2.7.2
+  - ruby-head
+  - jruby-head
 notifications:
   recipients:
-    - develop@marco-scholl.de
+    - karl@kandrsoftware.com
 branches:
   only:
     - master
+    - develop
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install espeak
+  # ensure that we are building/testing againt the newest depencency versions
+  - rm Gemfile.lock
+bundler_args: --without development
