@@ -50,6 +50,9 @@ gem 'pry'
 # gem 'simplecov', '>= 0.20.0'
 gem 'simplecov', '>= 0.17.0', '< 0.18'
 
+# For generating documentation
+gem 'yard', '>= 0.7.0'
+
 group :development do
   # Pry addons, from K&R repo
   gem 'pry-plus', github: 'K-and-R/pry-plus'

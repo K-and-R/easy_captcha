@@ -262,6 +262,7 @@ DEPENDENCIES
   rubocop-performance (>= 1.0)
   rubocop-rspec (>= 2.0)
   simplecov (>= 0.17.0, < 0.18)
+  yard (>= 0.7.0)
 
 BUNDLED WITH
    2.1.4
