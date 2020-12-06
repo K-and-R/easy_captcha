@@ -38,30 +38,33 @@ gem 'actionpack'
 # activesupport
 gem 'activesupport'
 
-# Pry, an IRB alternative
-gem 'pry'
-# Added  by `pry-plus` but needs to be locked to an earlier version
-gem 'pry-stack_explorer', '0.4.9.3'
-# Pry Rails extensions
-gem 'pry-rails'
-# Pry addons, from K&R repo
-gem 'pry-plus', github: 'K-and-R/pry-plus'
-
 # RSpec, and its Rails integration for testing
 gem 'rspec-rails', '>= 4.0.1'
 # Ability to test out install generator
 gem 'generator_spec'
 
-# Rubocop for ensuring well written code
-gem 'rubocop', '>= 1.0'
-# Rubocop performance evaluation
-gem 'rubocop-performance', '>= 1.0'
-# Rubocop RSpec evaluation
-gem 'rubocop-rspec', '>= 2.0'
-
-# Markdown lint tool
-gem 'mdl'
+# Pry, an IRB alternative
+gem 'pry'
 
 # Simplecov for code coverage reporting
 # gem 'simplecov', '>= 0.20.0'
 gem 'simplecov', '>= 0.17.0', '< 0.18'
+
+group :development do
+  # Pry addons, from K&R repo
+  gem 'pry-plus', github: 'K-and-R/pry-plus'
+  # Pry Rails extensions
+  gem 'pry-rails'
+  # Added  by `pry-plus` but needs to be locked to an earlier version
+  gem 'pry-stack_explorer', '0.4.9.3'
+
+  # Rubocop for ensuring well written code
+  gem 'rubocop', '>= 1.0'
+  # Rubocop performance evaluation
+  gem 'rubocop-performance', '>= 1.0'
+  # Rubocop RSpec evaluation
+  gem 'rubocop-rspec', '>= 2.0'
+
+  # Markdown lint tool
+  gem 'mdl'
+end

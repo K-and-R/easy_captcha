@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * [karlwilbur] - Loosen Rubygems dependency from `>= 3.0.0` to `>= 2.7.0`
 * [karlwilbur] - Add Travis CI badge to `README`
+* [karlwilbur] - Group `development` gems to exclude them from CI builds
 
 ## 0.9.0 (2020-12-05)
 
