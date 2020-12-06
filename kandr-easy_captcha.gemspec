@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version = EasyCaptcha::VERSION
 
   s.required_ruby_version = '>= 2.5.0'
-  s.required_rubygems_version = '>= 3.0.0'
+  s.required_rubygems_version = '>= 2.7.0'
   s.authors = ['Marco Scholl', 'Alexander Dreher', 'Karl Wilbur']
   s.date = '2011-09-15'
   s.summary = 'CAPTCHA Plugin for Rails'
