@@ -1,6 +1,4 @@
 rvm:
-  - 2.4.7
-  - 2.4.10
   - 2.5.0
   - 2.5.8
   - 2.6.0
@@ -16,3 +14,8 @@ branches:
   only:
     - master
     - develop
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install espeak
+  # ensure that we are building/testing againt the newest depencency versions
+  - rm Gemfile.lock
