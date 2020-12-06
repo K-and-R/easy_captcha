@@ -54,7 +54,7 @@ gem 'actionpack'
 # activesupport
 gem 'activesupport'
 
-# Pry, and IRB alternative
+# Pry, an IRB alternative
 gem 'pry'
 # Added  by `pry-plus` but needs to be locked to an earlier version
 gem 'pry-stack_explorer', '0.4.9.3'
@@ -81,6 +81,3 @@ gem 'mdl'
 # Simplecov for code coverage reporting
 # gem 'simplecov', '>= 0.20.0'
 gem 'simplecov', '>= 0.17.0', '< 0.18'
-
-# For generating documentation
-gem 'yard', '>= 0.7.0'
