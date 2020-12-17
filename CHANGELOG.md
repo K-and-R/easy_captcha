@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.9.2 (2020-12-16)
+
+* [karlwilbur] - [gemspec] Fix files included in gem
+* [karlwilbur] - Add `bin/` script to push coverage report to CodeClimate
+
 ## 0.9.1 (2020-12-06)
 
 ### Additions
