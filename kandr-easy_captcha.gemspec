@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
     'LICENSE.txt',
     'README.md'
   ]
-  s.files = `git ls-files -- {README.rdoc,LICENSE.txt,lib,resources}`.split("\n")
+  s.files = `git ls-files -- README.md LICENSE.txt lib/* resources/*`.split("\n")
 
   s.homepage = 'http://github.com/K-and-R/easy_captcha'
   s.licenses = ['MIT']
