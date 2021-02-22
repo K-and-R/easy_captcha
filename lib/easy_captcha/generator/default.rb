@@ -129,7 +129,13 @@ module EasyCaptcha
 
       def apply_blur
         return unless blur?
-        @canvas = canvas.blur_image(generator_config.blur_radius, generator_config.blur_sigma)
+        @canvas = canvas.blur_image(
+          generator_config.blur_radius,
+          generator_config.blur_sigma
+        ).motion_blur(
+          generator_config.blur_radius,
+          generator_config.blur_sigma
+        )
       end
 
       def apply_crop

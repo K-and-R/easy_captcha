@@ -7,6 +7,13 @@ module EasyCaptcha
 
     # send the generated image to browser
     def captcha
+      # Reset the CAPTCHA code on request
+      session.delete(:captcha)
+
+      # Generate the new CAPTCHA code
+      generate_captcha_code
+
+      # Generate and output the CAPTCHA image/audio file
       if (params[:format] == 'wav') && EasyCaptcha.espeak?
         send_data(generate_speech_captcha, disposition: 'inline', type: 'audio/wav')
       else

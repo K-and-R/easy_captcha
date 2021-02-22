@@ -48,73 +48,87 @@ you want to customize the default configuration
 
 ```ruby
   EasyCaptcha.setup do |config|
-    # Cache
-    # config.cache          = true
+    # #####
+    # # Cache
+    # config.cache                   = true
     # Cache temp dir from Rails.root
-    # config.cache_temp_dir = Rails.root.join('tmp', 'captchas')
+    # config.cache_temp_dir          = Rails.root.join('tmp', 'captchas')
     # Cache size
-    # config.cache_size     = 500
+    # config.cache_size              = 500
     # Cache expire
-    # config.cache_expire   = 1.day
+    # config.cache_expire            = 1.day
 
-    # Chars
-    # config.chars          = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
+    # #####
+    # # CAPTCHA
+    # # Chars available for CAPTCHA
+    # config.captcha_character_pool  = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
+    #
+    # # Length of CAPTCHA string
+    # config.captcha_character_count = 6
+    # config.captcha_character_count_max = 6
+    # config.captcha_character_count_min = 6
+    #
+    # # CAPTCHA Image dimensions
+    # config.captcha_image_height    = 40
 
-    # Length
-    # config.length         = 6
-
+    #####
     # Image
-    # config.image_height   = 40
-    # config.image_width    = 140
+    # config.captcha_image_height    = 40
+    # config.captcha_image_width     = 140
 
-    # eSpeak (default disabled)
+    # #####
+    # # eSpeak
+    # # Enable eSpeak using all defaults:
+    # config.espeak = true
+
+    # # Enable eSpeak using custom config:
     # config.espeak do |espeak|
-      # Amplitude, 0 to 200
-      # espeak.amplitude = 80..120
+    #   Amplitude, 0 to 200
+    #   espeak.amplitude = 80..120
 
-      # Word gap. Pause between words
-      # espeak.gap = 80
+    #   Word gap. Pause between words
+    #   espeak.gap = 80
 
-      # Pitch adjustment, 0 to 99
-      # espeak.pitch = 30..70
+    #   Pitch adjustment, 0 to 99
+    #   espeak.pitch = 30..70
 
-      # Use voice file of this name from espeak-data/voices
-      # espeak.voice = nil
+    #   Use voice file of this name from espeak-data/voices
+    #   espeak.voice = nil
     # end
 
-    # configure generator
+    # #####
+    # # Configure generator
     # config.generator :default do |generator|
+    #   # Blur
+    #   # generator.blur                   = true
+    #   # generator.blur_radius            = 1
+    #   # generator.blur_sigma             = 2
 
-      # Font
-      # generator.font_size              = 24
-      # generator.font_fill_color        = '#333333'
-      # generator.font_stroke_color      = '#000000'
-      # generator.font_stroke            = 0
-      # generator.font                   = File.expand_path('../../resources/afont.ttf', __FILE__)
+    #   # # Font
+    #   # generator.font_size              = 24
+    #   # generator.font_fill_color        = '#333333'
+    #   # generator.font_stroke_color      = '#000000'
+    #   # generator.font_stroke            = 0
+    #   # generator.font_family            = File.expand_path('../../resources/afont.ttf', __FILE__)
 
+    #   # # Image
+    #   # # Custom image to be used ofr CAPTCHA background
+    #   # generator.background_image       = nil
+    #   # # Ignored (set as `none`) when using custom background image
+    #   # generator.image_background_color = "#FFFFFF"
 
-      # Background color
-      # generator.image_background_color = "#FFFFFF"
-      # Or background image (e.g. transparent png)
-      # generator.background_image       = File.expand_path('../../resources/captcha_bg.png', __FILE__)
+    #   # # Implode  (the "funhouse mirror" effect; negative values allowed)
+    #   # generator.implode                = 0.1
 
-      # Wave
-      # generator.wave                   = true
-      # generator.wave_length            = (60..100)
-      # generator.wave_amplitude         = (3..5)
+    #   # # Sketch
+    #   # generator.sketch                 = true
+    #   # generator.sketch_radius          = 0.0
+    #   # generator.sketch_sigma           = 1.0
 
-      # Sketch
-      # generator.sketch                 = true
-      # generator.sketch_radius          = 3
-      # generator.sketch_sigma           = 1
-
-      # Implode
-      # generator.implode                = 0.1
-
-      # Blur
-      # generator.blur                   = true
-      # generator.blur_radius            = 1
-      # generator.blur_sigma             = 2
+    #   # Wave
+    #   # generator.wave                   = true
+    #   # generator.wave_length            = (60..100)
+    #   # generator.wave_amplitude         = (3..5)
     # end
   end
 ```
@@ -127,11 +141,11 @@ file below.
 ```ruby
   EasyCaptcha.setup do |config|
     # Cache
-    config.cache          = true
+    config.cache            = true
     # Cache temp dir from Rails.root
-    config.cache_temp_dir = Rails.root.join('tmp', 'captchas')
+    config.cache_temp_dir   = Rails.root.join('tmp', 'captchas')
     # Cache expire
-    config.cache_expire   = 1.day
+    config.cache_expire     = 1.day
     # Cache size
     # config.cache_size     = 500
   end
@@ -174,4 +188,7 @@ See the [CHANGELOG.md](./CHANGELOG.md)
 
 ## Copyright
 
-Copyright (c) 2010 Marco Scholl. See LICENSE.txt for further details.
+EasyCAPTCHA is licensed under The MIT License.
+
+Copyright (c) 2010-2021 Marco Scholl; K&R Software, LLC.; and EasyCAPTCHA Contributors.
+See [`LICENSE.txt`](./LICENSE.txt) and [`CHANGELOG.md`](./CHANGELOG.md) for further details.

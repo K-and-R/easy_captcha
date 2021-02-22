@@ -55,7 +55,7 @@ gem 'yard', '>= 0.7.0'
 
 group :development do
   # Pry addons, from K&R repo
-  gem 'pry-plus', github: 'K-and-R/pry-plus'
+  gem 'kandr-pry-plus', '>= 1.1.0'
   # Pry Rails extensions
   gem 'pry-rails'
   # Added  by `pry-plus` but needs to be locked to an earlier version
