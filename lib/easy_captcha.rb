@@ -22,6 +22,8 @@ module EasyCaptcha
     cache_size: 500,
     captcha_character_pool: %w[2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z],
     captcha_character_count: 6,
+    captcha_character_count_max: 6,
+    captcha_character_count_min: 6,
     captcha_image_height: 40,
     captcha_image_width: 140
   }.freeze
@@ -42,7 +44,7 @@ module EasyCaptcha
   mattr_accessor :captcha_character_pool
 
   # Length
-  mattr_accessor :captcha_character_count
+  mattr_accessor :captcha_character_count, :captcha_character_count_max, :captcha_character_count_min
 
   # Image dimensions
   mattr_accessor :captcha_image_height, :captcha_image_width
@@ -59,6 +61,13 @@ module EasyCaptcha
 
     def cache? #:nodoc:
       cache
+    end
+
+    def captcha_code_length
+      max = [captcha_character_count_min, captcha_character_count_max].max
+      min = [captcha_character_count_min, captcha_character_count_max].min
+      return (min..max).to_a.sample if captcha_character_count == :range
+      captcha_character_count
     end
 
     # select generator and configure this

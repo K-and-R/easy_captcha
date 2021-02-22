@@ -7,6 +7,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 * [karlwilbur] - Use `kandr-pry-plus` gem instead of the stale and broken `pry-plus`
 * [karlwilbur] - Reset CAPTCHA code on subsequent requests for a new image/audio file
+* [karlwilbur] - Add motion blur, using same blur values, when blur is used
+* [karlwilbur] - Add support for a range of CAPTCHA characters
 
 ## 0.9.2 (2020-12-16)
 

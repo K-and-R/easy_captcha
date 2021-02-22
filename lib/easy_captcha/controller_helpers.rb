@@ -50,7 +50,7 @@ module EasyCaptcha
     # rubocop:disable Metrics/AbcSize, Naming/MemoizedInstanceVariableName
     def generate_captcha_code
       @captcha_code ||= begin
-        length = EasyCaptcha.captcha_character_count
+        length = EasyCaptcha.captcha_code_length
         # overwrite `current_captcha_code`
         session[:captcha] = Array.new(length) { EasyCaptcha.captcha_character_pool.sample }.join
         Rails.logger.info(
