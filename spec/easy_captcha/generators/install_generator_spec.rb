@@ -22,7 +22,7 @@ RSpec.describe EasyCaptcha::Generators::InstallGenerator, type: :generator do
     File.open "#{temp_dir}/app/controllers/application_controller.rb", 'w' do |f|
       f.write "class ApplicationController \nend"
     end
-    # Ensure taht `ApplicationController` is already defined.
+    # Ensure that `ApplicationController` is already defined.
     require "#{temp_dir}/app/controllers/application_controller.rb"
     run_generator
   end
@@ -33,39 +33,40 @@ RSpec.describe EasyCaptcha::Generators::InstallGenerator, type: :generator do
   end
   # rubocop:enable RSpec/BeforeAfterAll
 
-  # rubocop:disable Lint/AmbiguousBlockAssociation
-  specify do
-    expect(destination_root).to have_structure {
-      directory('config') do
-        directory('initializers') do
-          file('easy_captcha.rb') do
-            contains('EasyCaptcha.setup')
-          end
-        end
-      end
-    }
+  specify 'creates proper initializer' do
+    expect(destination_root).to(have_structure do
+                                  directory('config') do
+                                    directory('initializers') do
+                                      file('easy_captcha.rb') do
+                                        contains('EasyCaptcha.setup')
+                                      end
+                                    end
+                                  end
+                                end
+                               ) # editorconfig-checker-disable-line
   end
 
-  specify do
-    expect(destination_root).to have_structure {
-      directory('app') do
-        directory('controllers') do
-          file('application_controller.rb') do
-            contains('reset_last_captcha_code!')
-          end
-        end
-      end
-    }
+  specify 'adds `reset_last_captcha_code!` to `application_controller`' do
+    expect(destination_root).to(have_structure do
+                                  directory('app') do
+                                    directory('controllers') do
+                                      file('application_controller.rb') do
+                                        contains('reset_last_captcha_code!')
+                                      end
+                                    end
+                                  end
+                                end
+                               ) # editorconfig-checker-disable-line
   end
 
-  specify do
-    expect(destination_root).to have_structure {
-      directory('config') do
-        file('routes.rb') do
-          contains('captcha_route')
-        end
-      end
-    }
+  specify 'adds `captcha_route`' do
+    expect(destination_root).to(have_structure do
+                                  directory('config') do
+                                    file('routes.rb') do
+                                      contains('captcha_route')
+                                    end
+                                  end
+                                end
+                               ) # editorconfig-checker-disable-line
   end
-  # rubocop:enable Lint/AmbiguousBlockAssociation
 end
