@@ -21,4 +21,5 @@ node_modules
 
 # environment
 .env
+.rspec
 Gemfile.lock
