@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * [karlwilbur] - Add motion blur, using same blur values, when blur is used
 * [karlwilbur] - Add support for a range of CAPTCHA characters
 * [karlwilbur] - Updates to `README.md`
+* [karlwilbur] - Remove `Gemfile.lock`
 
 ## 0.9.2 (2020-12-16)
 
