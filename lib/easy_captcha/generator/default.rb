@@ -10,6 +10,7 @@ module EasyCaptcha
     # default generator
     class Default < Base
       DEFAULT_CONFIG = {
+        background_color: '#FFFFFF',
         background_image: nil,
         blur: true,
         blur_radius: 1,
@@ -19,7 +20,6 @@ module EasyCaptcha
         font_size: 24,
         font_stroke: 0,
         font_stroke_color: '#000000',
-        image_background_color: '#FFFFFF',
         implode: 0.05,
         sketch: true,
         sketch_radius: 3,
@@ -36,14 +36,14 @@ module EasyCaptcha
         end
       end
 
-      # Gaussian Blur
+      # Background
+      attr_accessor :background_color, :background_image
+
+      # Blur
       attr_accessor :blur, :blur_radius, :blur_sigma
 
       # Font
       attr_accessor :font_size, :font_fill_color, :font, :font_family, :font_stroke, :font_stroke_color
-
-      # Background
-      attr_accessor :image_background_color, :background_image
 
       # Implode
       attr_accessor :implode
@@ -59,6 +59,18 @@ module EasyCaptcha
 
       # The CAPTCHA image
       attr_reader :image
+
+      def image_background_color=(val)
+        warn  '[DEPRECATION] EasyCaptcha configuration option `image_background_color` is deprecated. ' \
+              'Please use `background_color` instead.'
+        self.background_color = val
+      end
+
+      def image_background_color
+        warn  '[DEPRECATION] EasyCaptcha configuration option `image_background_color` is deprecated. ' \
+              'Please use `background_color` instead.'
+        background_color
+      end
 
       def blur? #:nodoc:
         @blur
@@ -160,8 +172,11 @@ module EasyCaptcha
       def canvas
         config = generator_config
         @canvas = nil if @canvas.respond_to?('destroyed?') && @canvas.destroyed?
-        @canvas ||= Magick::Image.new(EasyCaptcha.captcha_image_width, EasyCaptcha.captcha_image_height) do |_variable|
-          self.background_color = config.image_background_color unless config.image_background_color.nil?
+        @canvas ||= Magick::Image.new(
+          EasyCaptcha.captcha_image_width,
+          EasyCaptcha.captcha_image_height
+        ) do |_variable|
+          self.background_color = config.background_color unless config.background_color.nil?
           self.background_color = 'none' if config.background_image.present?
         end
       end

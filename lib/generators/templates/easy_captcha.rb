@@ -46,6 +46,12 @@ EasyCaptcha.setup do |config|
   # #####
   # # Generator
   # config.generator :default do |generator|
+  #   # Backgound
+  #   # Ignored (set as `none`) when using custom background image or fill
+  #   generator.background_color = "#FFFFFF"
+  #   # Custom image to be used for CAPTCHA background
+  #   generator.background_image = nil
+  #
   #   # Blur
   #   generator.blur                   = true
   #   generator.blur_radius            = 1
@@ -58,10 +64,7 @@ EasyCaptcha.setup do |config|
   #   generator.font_stroke            = 0
   #   generator.font_stroke_color      = '#000000'
   #
-  #   # Image
-  #   generator.image_background_color = "#FFFFFF"
-  #
-  #   # Implode
+  #   # Implode  (the "funhouse mirror" effect; negative values allowed)
   #   generator.implode                = 0.1
   #
   #   # Sketch
