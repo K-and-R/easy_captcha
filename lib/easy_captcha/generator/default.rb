@@ -143,7 +143,13 @@ module EasyCaptcha
       private
 
       def apply_blur
-        return @canvas unless blur? && canvas.respond_to?(:blur_image)
+        return @canvas unless blur?
+        apply_image_blur
+        apply_motion_blur
+      end
+
+      def apply_image_blur
+        return @canvas unless canvas.respond_to?(:blur_image)
         ###
         # https://rmagick.github.io/image1.html#blur_image
         # Parameters:
@@ -153,6 +159,9 @@ module EasyCaptcha
           generator_config.blur_radius,
           generator_config.blur_sigma
         )
+      end
+
+      def apply_motion_blur
         return @canvas unless canvas.respond_to?(:motion_blur)
         ###
         # https://rmagick.github.io/image2.html#motion_blur
