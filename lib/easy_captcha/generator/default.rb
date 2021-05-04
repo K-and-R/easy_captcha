@@ -89,15 +89,19 @@ module EasyCaptcha
       def generate(code)
         @code = code
         render_code_in_image
-        apply_blur
-        apply_wave
-        apply_sketch
-        apply_implode
-        apply_crop
+        apply_effects
         create_blob
         set_image_encoding
         free_canvas
         @image
+      end
+
+      def apply_effects
+        apply_sketch
+        apply_implode
+        apply_blur
+        apply_wave
+        apply_crop
       end
 
       def create_blob
