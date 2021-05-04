@@ -11,8 +11,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * [karlwilbur] - Add support for a range of CAPTCHA characters
 * [karlwilbur] - Add support `background_fill` generator config option
 * [karlwilbur] - *DEPRECATE* `image_background_color` config option in favor of `background_color`
-* [karlwilbur] - Updates to `README.md`
+* [karlwilbur] - Refactor specs:
+
+    - Remove spec options from repo
+    - Add specs for default generator
+
 * [karlwilbur] - Remove `Gemfile.lock`
+* [karlwilbur] - Updates to `README.md`
 
 ## 0.9.2 (2020-12-16)
 
