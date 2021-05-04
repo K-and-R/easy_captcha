@@ -11,6 +11,7 @@ module EasyCaptcha
     class Default < Base
       DEFAULT_CONFIG = {
         background_color: '#FFFFFF',
+        background_fill: nil,
         background_image: nil,
         blur: true,
         blur_radius: 1,
@@ -37,7 +38,7 @@ module EasyCaptcha
       end
 
       # Background
-      attr_accessor :background_color, :background_image
+      attr_accessor :background_color, :background_fill, :background_image
 
       # Blur
       attr_accessor :blur, :blur_radius, :blur_sigma
@@ -169,17 +170,20 @@ module EasyCaptcha
         @canvas = canvas.wave(random_wave_amplitude, random_wave_length)
       end
 
+      # rubocop:disable Metrics/AbcSize
       def canvas
         config = generator_config
         @canvas = nil if @canvas.respond_to?('destroyed?') && @canvas.destroyed?
         @canvas ||= Magick::Image.new(
           EasyCaptcha.captcha_image_width,
-          EasyCaptcha.captcha_image_height
+          EasyCaptcha.captcha_image_height,
+          config.background_fill
         ) do |_variable|
           self.background_color = config.background_color unless config.background_color.nil?
-          self.background_color = 'none' if config.background_image.present?
+          self.background_color = 'none' if config.background_image.present? || config.background_fill.present?
         end
       end
+      # rubocop:enable Metrics/AbcSize
 
       def generator_config
         @generator_config ||= self

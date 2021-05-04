@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * [karlwilbur] - Reset CAPTCHA code on subsequent requests for a new image/audio file
 * [karlwilbur] - Add motion blur, using same blur values, when blur is used
 * [karlwilbur] - Add support for a range of CAPTCHA characters
+* [karlwilbur] - Add support `background_fill` generator config option
 * [karlwilbur] - *DEPRECATE* `image_background_color` config option in favor of `background_color`
 * [karlwilbur] - Updates to `README.md`
 * [karlwilbur] - Remove `Gemfile.lock`

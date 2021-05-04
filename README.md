@@ -101,7 +101,12 @@ you want to customize the default configuration
     # config.generator :default do |generator|
     #   # # Backgound
     #   # # Ignored (set as `none`) when using custom background image or fill
-    #   # generator.background_color = "#FFFFFF"
+    #   # generator.background_color = '#FFFFFF'
+    #   # An instance of a `Fill` class. RMagick supplies three `Fill` classes:
+    #   #    - `HatchFill`
+    #   #    - `GradientFill`
+    #   #    - `TextureFill`.
+    #   generator.background_fill  = nil
     #   # # Custom image to be used for CAPTCHA background
     #   # generator.background_image = nil
 
