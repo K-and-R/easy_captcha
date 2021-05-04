@@ -1,6 +1,6 @@
 # EasyCAPTCHA
 
-[![Build Status](https://travis-ci.org/K-and-R/easy_captcha.svg?branch=master)](https://travis-ci.org/K-and-R/easy_captcha)
+[![Build Status](https://travis-ci.com/K-and-R/easy_captcha.svg?branch=master)](https://travis-ci.org/K-and-R/easy_captcha)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/maintainability)](https://codeclimate.com/github/K-and-R/easy_captcha/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/test_coverage)](https://codeclimate.com/github/K-and-R/easy_captcha/test_coverage)
 
@@ -97,8 +97,19 @@ you want to customize the default configuration
     # end
 
     # #####
-    # # Configure generator
+    # # Generator
     # config.generator :default do |generator|
+    #   # # Backgound
+    #   # # Ignored (set as `none`) when using custom background image or fill
+    #   # generator.background_color = '#FFFFFF'
+    #   # An instance of a `Fill` class. RMagick supplies three `Fill` classes:
+    #   #    - `HatchFill`
+    #   #    - `GradientFill`
+    #   #    - `TextureFill`.
+    #   generator.background_fill  = nil
+    #   # # Custom image to be used for CAPTCHA background
+    #   # generator.background_image = nil
+
     #   # Blur
     #   # generator.blur                   = true
     #   # generator.blur_radius            = 1
@@ -110,12 +121,6 @@ you want to customize the default configuration
     #   # generator.font_stroke_color      = '#000000'
     #   # generator.font_stroke            = 0
     #   # generator.font_family            = File.expand_path('../../resources/afont.ttf', __FILE__)
-
-    #   # # Image
-    #   # # Custom image to be used ofr CAPTCHA background
-    #   # generator.background_image       = nil
-    #   # # Ignored (set as `none`) when using custom background image
-    #   # generator.image_background_color = "#FFFFFF"
 
     #   # # Implode  (the "funhouse mirror" effect; negative values allowed)
     #   # generator.implode                = 0.1
