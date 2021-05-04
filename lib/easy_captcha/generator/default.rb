@@ -143,13 +143,27 @@ module EasyCaptcha
       private
 
       def apply_blur
-        return unless blur?
+        return @canvas unless blur? && canvas.respond_to?(:blur_image)
+        ###
+        # https://rmagick.github.io/image1.html#blur_image
+        # Parameters:
+        #     radius (Float) (defaults to: 0.0) - The radius of the Gaussian operator.
+        #     sigma (Float) (defaults to: 1.0) - The standard deviation of the Gaussian operator. Must be non-zero.
         @canvas = canvas.blur_image(
           generator_config.blur_radius,
           generator_config.blur_sigma
-        ).motion_blur(
+        )
+        return @canvas unless canvas.respond_to?(:motion_blur)
+        ###
+        # https://rmagick.github.io/image2.html#motion_blur
+        # Parameters:
+        #     radius (Float) (defaults to: 0.0) - The radius of the Gaussian operator.
+        #     sigma (Float) (defaults to: 1.0) - The standard deviation of the Gaussian operator. Must be non-zero.
+        #     angle (Float) (defaults to: 0.0) - The angle (in degrees) of the blurring motion.
+        @canvas = canvas.motion_blur(
           generator_config.blur_radius,
-          generator_config.blur_sigma
+          generator_config.blur_sigma,
+          rand(180)
         )
       end
 
@@ -178,9 +192,9 @@ module EasyCaptcha
         ###
         # https://rmagick.github.io/image3.html#sketch
         # Parameters:
-        #     radius (Float) (defaults to: 0.0) - The radius
-        #     sigma (Float) (defaults to: 1.0) - The standard deviation
-        #     angle (Float) (defaults to: 0.0) - The angle (in degrees)
+        #     radius (Float) (defaults to: 0.0) - The radius of the Gaussian operator.
+        #     sigma (Float) (defaults to: 1.0) - The standard deviation of the Gaussian operator.
+        #     angle (Float) (defaults to: 0.0) - The angle (in degrees) of the sketch lines.
         @canvas = canvas.sketch(generator_config.sketch_radius, generator_config.sketch_sigma, rand(180))
       end
 
