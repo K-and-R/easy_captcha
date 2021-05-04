@@ -209,9 +209,9 @@ module EasyCaptcha
           EasyCaptcha.captcha_image_width,
           EasyCaptcha.captcha_image_height,
           config.background_fill
-        ) do |_variable|
-          self.background_color = config.background_color unless config.background_color.nil?
-          self.background_color = 'none' if config.background_image.present? || config.background_fill.present?
+        ) do |image|
+          image.background_color = config.background_color unless config.background_color.nil?
+          image.background_color = 'none' if config.background_image.present? || config.background_fill.present?
         end
       end
       # rubocop:enable Metrics/AbcSize
