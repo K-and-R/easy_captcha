@@ -1,6 +1,6 @@
 # EasyCAPTCHA
 
-[![Build Status](https://travis-ci.org/K-and-R/easy_captcha.svg?branch=master)](https://travis-ci.org/K-and-R/easy_captcha)
+[![Build Status](https://travis-ci.com/K-and-R/easy_captcha.svg?branch=master)](https://travis-ci.org/K-and-R/easy_captcha)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/maintainability)](https://codeclimate.com/github/K-and-R/easy_captcha/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/test_coverage)](https://codeclimate.com/github/K-and-R/easy_captcha/test_coverage)
 
