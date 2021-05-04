@@ -156,6 +156,7 @@ module EasyCaptcha
       end
 
       def apply_crop
+        return @canvas unless canvas.respond_to?(:crop)
         # Crop image because to big after waveing
         @canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.captcha_image_width, EasyCaptcha.captcha_image_height)
       end
@@ -165,12 +166,12 @@ module EasyCaptcha
       end
 
       def apply_sketch
-        return unless sketch? && canvas.respond_to?(:sketch)
+        return @canvas unless sketch? && canvas.respond_to?(:sketch)
         @canvas = canvas.sketch(generator_config.sketch_radius, generator_config.sketch_sigma, rand(180))
       end
 
       def apply_wave
-        return unless wave?
+        return @canvas unless wave? && canvas.respond_to?(:wave)
         @canvas = canvas.wave(random_wave_amplitude, random_wave_length)
       end
 
