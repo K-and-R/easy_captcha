@@ -105,13 +105,11 @@ module EasyCaptcha
       end
 
       def create_blob
-        @image = begin
-          if generator_config.background_image.present?
-            create_composite_blob
-          else
-            canvas.to_blob { self.format = 'PNG' }
-          end
-        end
+        @image =  if generator_config.background_image.present?
+                    create_composite_blob
+                  else
+                    canvas.to_blob { self.format = 'PNG' }
+                  end
       end
 
       def create_composite_blob
