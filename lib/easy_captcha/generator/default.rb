@@ -158,20 +158,41 @@ module EasyCaptcha
       def apply_crop
         return @canvas unless canvas.respond_to?(:crop)
         # Crop image because to big after waveing
+        ###
+        # https://rmagick.github.io/image1.html#crop
+        # Parameters:
+        #    gravity (Magick::GravityType) - the gravity type
+        #    width (Numeric) - width of region
+        #    height (Numeric) - height of region
         @canvas = canvas.crop(Magick::CenterGravity, EasyCaptcha.captcha_image_width, EasyCaptcha.captcha_image_height)
       end
 
       def apply_implode
+        ###
+        # https://rmagick.github.io/image2.html#implode
+        # Parameters:
+        #     amount (Float) (defaults to: 0.50) - The precentage to implode the image
         @canvas = canvas.implode(generator_config.implode.to_f) if generator_config.implode.is_a? Float
       end
 
       def apply_sketch
         return @canvas unless sketch? && canvas.respond_to?(:sketch)
+        ###
+        # https://rmagick.github.io/image3.html#sketch
+        # Parameters:
+        #     radius (Float) (defaults to: 0.0) - The radius
+        #     sigma (Float) (defaults to: 1.0) - The standard deviation
+        #     angle (Float) (defaults to: 0.0) - The angle (in degrees)
         @canvas = canvas.sketch(generator_config.sketch_radius, generator_config.sketch_sigma, rand(180))
       end
 
       def apply_wave
         return @canvas unless wave? && canvas.respond_to?(:wave)
+        ###
+        # https://rmagick.github.io/image3.html#wave
+        # Parameters:
+        #     amplitude (Float) (defaults to: 25.0) - the amplitude
+        #     wavelength (Float) (defaults to: 150.0) - the wave length
         @canvas = canvas.wave(random_wave_amplitude, random_wave_length)
       end
 
@@ -179,6 +200,13 @@ module EasyCaptcha
       def canvas
         config = generator_config
         @canvas = nil if @canvas.respond_to?('destroyed?') && @canvas.destroyed?
+        ###
+        # https://rmagick.github.io/image1.html#new
+        # Parameters:
+        #     cols (Numeric) - the image width
+        #     rows (Numeric) - the image height
+        #     fill (Magick::GradientFill, Magick::HatchFill, Magick::TextureFill) (defaults to: nil)
+        #                    - if object is given as fill argument, background color will be filled using it.
         @canvas ||= Magick::Image.new(
           EasyCaptcha.captcha_image_width,
           EasyCaptcha.captcha_image_height,
