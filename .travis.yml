@@ -3,6 +3,8 @@ rvm:
   - 2.6.6
   - 2.7.0
   - 2.7.2
+  - 3.0.0
+  - 3.0.1
   - ruby-head
   - jruby-head
 notifications:
