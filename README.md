@@ -1,8 +1,8 @@
 # EasyCAPTCHA
 
 [![Build Status](https://travis-ci.com/K-and-R/easy_captcha.svg?branch=master)](https://travis-ci.org/K-and-R/easy_captcha)
-[![Maintainability](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/maintainability)](https://codeclimate.com/github/K-and-R/easy_captcha/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/0505012081a472de86e2/test_coverage)](https://codeclimate.com/github/K-and-R/easy_captcha/test_coverage)
+[![Maintainability](https://qlty.sh/gh/K-and-R/projects/easy_captcha/maintainability.svg)](https://qlty.sh/gh/K-and-R/projects/easy_captcha)
+[![Code Coverage](https://qlty.sh/gh/K-and-R/projects/easy_captcha/coverage.svg)](https://qlty.sh/gh/K-and-R/projects/easy_captcha)
 
 A simple captcha implementation for Rails 5+ based on RMagick.
 
